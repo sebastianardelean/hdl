@@ -1,17 +1,25 @@
-PROJECT=counter
+PROJECT=mips
 FILES=src
 TEST=testbench
 OUT=obj
-OBJ=counter
+OBJ=mips
 HDL=iverilog
 GTKWAVE=gtkwave
+
+ALL_SRC = \
+    $(FILES)/mipsmem.sv \
+    $(FILES)/mipsparts.sv \
+    $(FILES)/mips.sv \
+    $(FILES)/mipstop.sv
+
+
 
 all: compile
 
 
 compile:
 	mkdir -p $(OUT)
-	$(HDL) $(FILES)/counter.v $(TEST)/counter_tb.v -o $(OUT)/$(OBJ)
+	$(HDL) -g2012 $(ALL_SRC) $(TEST)/mipstest.sv -o $(OUT)/$(OBJ)
 
 run:
 	vvp $(OUT)/$(OBJ)
