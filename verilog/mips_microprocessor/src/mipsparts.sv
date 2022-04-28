@@ -38,6 +38,11 @@ module sl2(input  logic [31:0] a,
   assign y = {a[29:0], 2'b00};
 endmodule
 
+module sl16(input  logic [15:0] a,
+	    output logic [31:0] y);
+  assign y = {a[15:0], 16'b0};
+endmodule
+
 module signext(input  logic [15:0] a,
                output logic [31:0] y);
               
@@ -71,5 +76,19 @@ module mux2 #(parameter WIDTH = 8)
               output logic [WIDTH-1:0] y);
 
   assign y = s ? d1 : d0; 
+endmodule
+
+module mux3 #(parameter WIDTH=8)
+	     (input  logic [WIDTH-1:0] d0,d1,d2,
+	      input  logic [1:0]       s,
+	      output logic [WIDTH-1:0] y);
+
+    always_comb
+	case (s)
+	    2'b00: y = d0;
+	    2'b01: y = d1;
+	    2'b10: y = d2;
+	    default: y=2'bXX;
+	endcase
 endmodule
 
