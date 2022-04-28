@@ -62,8 +62,11 @@ module maindec(input  logic [5:0] op,
                output logic       jump,
                output logic [1:0] aluop);
 
-  logic [8:0] controls;
-
+  logic [8:0] controls;//TODO: Make it on 16 bits
+//TODO: Only aluop is modified. Such that in case of 
+//R type it will look at the func code in alu decoder. In that case the aluop
+//is 10
+//I,J type -> aluop will encode the function that need to perform
   assign {regwrite, regdst, alusrc,
           branch, memwrite,
           memtoreg, jump, aluop} = controls;
@@ -76,24 +79,48 @@ module maindec(input  logic [5:0] op,
       6'b000100: controls <= 9'b000100001; //BEQ
       6'b001000: controls <= 9'b101000000; //ADDI
       6'b000010: controls <= 9'b000000100; //J
+      //TODO: Add ALL OPCODES
       default:   controls <= 9'bxxxxxxxxx; //???
     endcase
 endmodule
 
 module aludec(input  logic [5:0] funct,
               input  logic [1:0] aluop,
-              output logic [2:0] alucontrol);
+              output logic [3:0] alucontrol);
 
   always_comb
     case(aluop)
-      2'b00: alucontrol <= 3'b010;  // add
-      2'b01: alucontrol <= 3'b110;  // sub
-      default: case(funct)          // RTYPE
+      2'b00: alucontrol <= 3'b010;  // add Used in MAINDEC only for SW & LW
+      2'b01: alucontrol <= 3'b110;  // sub USED IN MAINDEC only for BEQ
+      2'b10: case(funct)          // RTYPE
+	  6'b000000: alucontrol <= 3'bxxx;  // SLL
+	  6'b000010: alucontrol <= 3'bxxx;  // SRL
+	  6'b000011: alucontrol <= 3'bxxx;  // SRA
+	  6'b000100: alucontrol <= 3'bxxx;  // SLLV
+	  6'b000110: alucontrol <= 3'bxxx;  // SRLV
+	  6'b000111: alucontrol <= 3'bxxx;  // SRAV
+	  6'b001000: alucontrol <= 3'bxxx;  // JR
+	  6'b001001: alucontrol <= 3'bxxx;  // JALR
+	  6'b001100: alucontrol <= 3'bxxx;  // SYSCALL
+	  6'b001101: alucontrol <= 3'bxxx;  // BREAK
+	  6'b010000: alucontrol <= 3'bxxx;  // MFHI
+	  6'b010001: alucontrol <= 3'bxxx;  // MTHI
+	  6'b010010: alucontrol <= 3'bxxx;  // MFLO
+	  6'b010011: alucontrol <= 3'bxxx;  // MTLO
+	  6'b011000: alucontrol <= 3'bxxx;  // MULT
+	  6'b011001: alucontrol <= 3'bxxx;  // MULTU
+	  6'b011010: alucontrol <= 3'bxxx;  // DIV
+	  6'b011011: alucontrol <= 3'bxxx;  // DIVU
           6'b100000: alucontrol <= 3'b010; // ADD
+	  6'b100001: alucontrol <= 3'bxxx;  // ADDU
           6'b100010: alucontrol <= 3'b110; // SUB
-          6'b100100: alucontrol <= 3'b000; // AND
-          6'b100101: alucontrol <= 3'b001; // OR
-          6'b101010: alucontrol <= 3'b111; // SLT
+	  6'b100011: alucontrol <= 3'bxxx;  // SUBU
+	  6'b100100: alucontrol <= 3'b000;  // AND
+	  6'b100101: alucontrol <= 3'b001;  // OR
+	  6'b100110: alucontrol <= 3'bxxx;  // XOR
+	  6'b100111: alucontrol <= 3'bxxx;  // NOR
+	  6'b101010: alucontrol <= 3'b111;  // SLT
+	  6'b101011: alucontrol <= 3'bxxx;  // SLTU
           default:   alucontrol <= 3'bxxx; // ???
         endcase
     endcase
@@ -143,6 +170,26 @@ module datapath(input  logic        clk, reset,
   alu         alu(.a(srca), .b(srcb), .f(alucontrol),
                   .result(aluout), .zero(zero));
 endmodule
+
+module alu(input  logic [31:0] a, b,
+           input  logic [4:0]  shamt,
+	   input  logic [3:0]  f,
+	   output logic [31:0] result,
+	   output logic        zero);
+    always_comb
+	case (f)
+          4'b0010: result = a + b;
+          4'b0110: result = a - b;
+          4'b0000: result = a & b;
+          4'b0001: result = a | b;
+	  4'b0111: result = b << shamt;
+          4'b0111: if (a<b) 
+		    result = 1'b1;
+		  else
+		    result = 1'b0;
+    endcase
+
+
 
 module alu(input  logic [31:0] a, b,
            input  logic [2:0]  f,
