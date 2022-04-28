@@ -74,6 +74,34 @@ module maindec(input  logic [5:0] op,
   always_comb
     case(op)
       6'b000000: controls <= 9'b110000010; //Rtype
+      6'b000001: controls <= 9'b000000000; //bltz
+      6'b000010: controls <= 9'b000000000; //j
+      6'b000011: controls <= 9'b000000000; //jal
+      6'b000100: controls <= 9'b000000000; //beq
+      6'b000101: controls <= 9'b000000000; //bne
+      6'b000110: controls <= 9'b000000000; //blez
+      6'b000111: controls <= 9'b000000000; //bgtz
+      6'b001000: controls <= 9'b000000000; //addi
+      6'b001001: controls <= 9'b000000000; //addiu
+      6'b001010: controls <= 9'b000000000; //slti
+      6'b001011: controls <= 9'b000000000; //sltiu
+      6'b001100: controls <= 9'b000000000; //andi
+      6'b001101: controls <= 9'b000000000; //ori
+      6'b001110: controls <= 9'b000000000; //xori
+      6'b001111: controls <= 9'b000000000; //lui
+      6'b011100: controls <= 9'b000000000; //mul
+      6'b100000: controls <= 9'b000000000; //lb
+      6'b100001: controls <= 9'b000000000; //lh
+      6'b100011: controls <= 9'b000000000; //lw
+      6'b100100: controls <= 9'b000000000; //lbu
+      6'b100101: controls <= 9'b000000000; //lhu
+      6'b101000: controls <= 9'b000000000; //sb
+      6'b101001: controls <= 9'b000000000; //sh
+      6'b101011: controls <= 9'b000000000; //sw
+      default:
+
+
+
       6'b100011: controls <= 9'b101001000; //LW
       6'b101011: controls <= 9'b001010000; //SW
       6'b000100: controls <= 9'b000100001; //BEQ
