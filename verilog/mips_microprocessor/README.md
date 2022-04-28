@@ -37,3 +37,15 @@
 2. lw
 3. sw
 4. beq
+
+
+LINKS:
+https://phoenix.goucher.edu/~kelliher/f2009/cs220/mipsir.html
+
+https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf
+
+https://www.d.umn.edu/~gshute/mips/control-signal-summary.html
+
+https://en.wikibooks.org/wiki/MIPS_Assembly/MIPS_Details
+
+
