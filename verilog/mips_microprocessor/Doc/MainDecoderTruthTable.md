@@ -4,8 +4,8 @@ ALUOp = 9 bits
 
 0000 ADD
 0001 SUB
-0010 MUL
-0011 DIV
+0010 MUL32
+0011 MUL64
 0100 SET
 0101 AND
 0110 OR
@@ -13,7 +13,7 @@ ALUOp = 9 bits
 1000 NOR
 1001 SHIFT LEFT 
 1010 SHIFT RIGHT
-1011 SHIFT LEFT ARITH -> TO BE REPLACED1
+1011 DIV
 1100 SHIFT RIGHT ARITH
 1101 NOP
 1110 NOP
@@ -41,7 +41,7 @@ ALUOp = 9 bits
 | ori         | 001101 | 1        | 0      | 1      | 0      | 0        | 0        | 0    | 10001 | OR
 | xori        | 001110 | 1        | 1      | 1      | 0      | 0        | 0        | 0    | 10010 | XOR
 | lui         | 001111 | 1        | 0      | 1      | 0      | 0        | 0        | 0    | 10011 | SHIFT LEFT BY 16
-| mul         | 011100 | 1        | 0      | 0      | 0      | 0        | 0        | 0    | 10100 | MUL
+| mul         | 011100 | 1        | 0      | 0      | 0      | 0        | 0        | 0    | 10100 | MUL32
 | lb          | 100000 | 1        | 0      | 1      | 0      | 0        | 1        | 0    | 10101 | ADD
 | lh          | 100001 | 1        | 0      | 1      | 0      | 0        | 1        | 0    | 10110 | ADD
 | lbu         | 100100 | 1        | 0      | 1      | 0      | 0        | 1        | 0    | 10111 | ADD
