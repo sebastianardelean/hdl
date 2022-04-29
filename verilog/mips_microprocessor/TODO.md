@@ -33,3 +33,6 @@
 ## Test
 
 1. Test the instructions on the kernel processor.
+
+
+Check [Link](https://www.youtube.com/watch?v=1SG4uU8vy7Q&ab_channel=DowntotheWires) for HI/LO and coprocessor
