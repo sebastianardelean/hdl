@@ -25,3 +25,7 @@
 ## Schematic
 
 1. Draw schematic in Digital or, better, in Logisim
+
+## Test
+
+1. Test the instructions on the kernel processor.
