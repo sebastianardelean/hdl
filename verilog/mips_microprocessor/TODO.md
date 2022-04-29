@@ -17,6 +17,10 @@
 13. DIV
 14. DIVU
 
+## Remaining logic units to implement/adapt:
+
+1. Modify ALU for Branch instructions
+
 ## Floating point coprocessor
 
 1. Implement coprocessor
