@@ -24,7 +24,7 @@ module mips(input  logic        clk, reset,
                pcsrc, zero,
                regdst, regwrite, jump;
   logic [1:0]  alusrc;
-  logic [3:0]  alucontrol;
+  logic [4:0]  alucontrol;
 
   controller c(instr[31:26], instr[5:0], zero,
                memtoreg, memwrite, pcsrc,
@@ -44,7 +44,7 @@ module controller(input  logic [5:0] op, funct,
 		  output logic [1:0] alusrc,
                   output logic       regdst, regwrite,
                   output logic       jump,
-                  output logic [3:0] alucontrol);
+                  output logic [4:0] alucontrol);
 
   logic [7:0] aluop;
   logic       branch;
@@ -103,7 +103,7 @@ endmodule
 
 module aludec(input  logic [5:0] funct,
               input  logic [7:0] aluop,
-              output logic [3:0] alucontrol);
+              output logic [4:0] alucontrol);
 
 
   always_comb
@@ -169,7 +169,7 @@ module datapath(input  logic        clk, reset,
                 input  logic [1:0]  alusrc, 
 		input  logic        regdst,
                 input  logic        regwrite, jump,
-                input  logic [3:0]  alucontrol,
+                input  logic [4:0]  alucontrol,
                 output logic        zero,
                 output logic [31:0] pc,
                 input  logic [31:0] instr,
@@ -203,6 +203,7 @@ module datapath(input  logic        clk, reset,
                      memtoreg, result);
   signext     se(instr[15:0], signimm);
   sl16        immsh16(instr[15:0], signimmsh16);
+  //TODO: Instantiate hi-lo regfile
 
   // ALU logic
   mux3 #(32)  srcbmux(writedata, signimm, signimmsh16,
@@ -210,11 +211,16 @@ module datapath(input  logic        clk, reset,
                       srcb);
   alu         alu(.a(srca), .b(srcb), .shamt(instr[10:6]),.f(alucontrol),
                   .result(aluout), .zero(zero));
+//TODO: instantiate multiply64 unit
+//ALU will perform NOPS on the controls that are asigned for instructions that
+//use HI-LO registers
+//BUT multiply64 will decode the function and will perform Div/Mul or Move
+//instructions
 endmodule
 
 module alu(input  logic [31:0] a, b,
            input  logic [4:0]  shamt,
-	   input  logic [3:0]  f,
+	   input  logic [4:0]  f,
 	   output logic [31:0] result,
 	   output logic        zero);
     always_comb
@@ -244,3 +250,21 @@ module alu(input  logic [31:0] a, b,
     assign zero = (result == 32'b0);
 endmodule
 
+module multiply (input  logic [31:0] a, b,
+		 input  logic [2:0] f,
+		 output logic [31:0] hi,
+		 output logic [31:0] lo,
+	         output logic [31:0] result);	
+    always_comb
+	case (f)
+	    case 3'b000: {hi,lo} <= a * b;
+	    case 3'b001: begin
+		lo <= a / b;
+		hi <= a % b;
+	    end
+	    case 3'b010: hi <= a;
+	    case 3'b011: lo <= a;
+	    case 3'b100: result <= hi;
+	    case 3'b101: result <= lo;
+	endcase
+endmodule

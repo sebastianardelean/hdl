@@ -25,6 +25,22 @@ module regfile(input  logic        clk,
   assign rd2 = (ra2 != 0) ? rf[ra2] : 0;
 endmodule
 
+module reghilo (input  logic        clk,
+                input  logic        we,
+		input  logic [31:0] ihi, ilo,
+		output logic [31:0] ohi, olo
+	    );
+    logic [31:0] hi,lo;
+    always_ff @(posedge clk)
+	if (we) begin
+	    hi <= ihi;
+	    lo <= ilo;
+	end
+    assign ohi = hi;
+    assign olo = olo;
+endmodule
+
+
 module adder(input  logic [31:0] a, b,
              output logic [31:0] y);
 
