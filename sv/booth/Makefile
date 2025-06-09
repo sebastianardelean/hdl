@@ -11,7 +11,7 @@ SRC=\
 
 
 TESTS=\
-	test/booth_tb.sv
+	test/booth_tb.sv 
 
 
 all: compile

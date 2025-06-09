@@ -1,9 +1,10 @@
-//----------------------------------------------
-// Design Name:  
-// File Name: 
-// Function: 
-// Version | Changes | Author
-//----------------------------------------------
+//---------------------------------------------------------------------------
+// Design Name: Booth Multiplication Algorithm 
+// File Name: booth_parts.sv
+// Description: Implementation of the Booth Multiplication Algorithm
+// Version History
+// * June 9, 2025 (sebastian ardelean): Finished the implementation 
+// --------------------------------------------------------------------------
 
 module booth_top (
 	      input logic	       clk,

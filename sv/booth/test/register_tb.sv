@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module register_tb;
 
     // Parameters
@@ -27,7 +28,7 @@ module register_tb;
 
    initial
      begin
-	$dumpfile("booth.vcd");
+	$dumpfile("register.vcd");
 	$dumpvars;
      end
 	

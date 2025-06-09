@@ -1,3 +1,10 @@
+//---------------------------------------------------------------------------
+// Design Name: Booth Multiplication Algorithm 
+// File Name: booth_parts.sv
+// Description: Implementation of the Booth Multiplication Algorithm
+// Version History
+// * June 9, 2025 (sebastian ardelean): Finished the implementation 
+// --------------------------------------------------------------------------
 module dff (
 	    input logic		     clk,
 	    input logic		     rst_n,
