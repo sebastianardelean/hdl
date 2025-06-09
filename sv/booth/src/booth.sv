@@ -1,0 +1,140 @@
+//----------------------------------------------
+// Design Name:  
+// File Name: 
+// Function: 
+// Version | Changes | Author
+//----------------------------------------------
+
+module booth_top (
+	      input logic	       clk,
+	      input logic	       enable,
+	      input logic	       rst_n,
+	      input logic signed [7:0] inbus,
+	      output logic	       done,
+	      output logic [7:0]      outbus
+	      
+	      );
+   //control signals
+   logic [7:0] c;
+   logic       stop;
+   
+   tri [7:0]  output_buffer;
+   
+   // Register Outputs
+   logic signed [7:0] A_reg, M_reg, Q_reg;
+   logic	      Qm;
+   
+   // Count
+   logic [2:0] counter_o;
+   logic       count_and_o;
+
+   // Other intermediate signals
+   logic signed [7:0] adder_o;
+   logic [7:0]	      xor_o;
+
+   logic signed [7:0] A_outbus;
+   logic signed [7:0] Q_outbus;
+   
+   
+   cu ctrl_unit (
+		 .clk(clk),
+		 .start(enable),
+		 .rst_n(rst_n),
+		 .count(count_and_o),
+		 .q0(Q_reg[0]),
+		 .qm(Qm),
+		 .stop(stop),
+		 .c(c)
+		 );
+   
+   assign done = stop;
+  
+   counter_3bits counter (
+			  .clk(clk),
+			  .rst_n(rst_n),
+			  .en(c[5]),
+			  .count(counter_o)
+			  );
+
+   and3 and_counter (
+		       .a(counter_o[0]),
+		       .b(counter_o[1]),
+		       .c(counter_o[2]),
+		       .y(count_and_o)
+		       );
+   
+   
+   register #(.WIDTH(8)) reg_A (
+				.clk(clk),
+				.rst_n(rst_n),
+				.load_en(c[2]),
+				.shift_en(c[4]),
+				.shift_in(A_reg[7]),
+				.d(adder_o),
+				.q(A_reg)
+				);
+   
+   
+   register #(.WIDTH(8)) q_Q (
+			    .clk(clk),
+			    .rst_n(rst_n),
+			    .load_en(c[1]),
+			    .shift_en(c[4]),
+			    .shift_in(A_reg[0]),
+			    .d(inbus),
+			    .q(Q_reg)
+			    );
+   
+   register #(.WIDTH(1)) reg_Qm (
+				 .clk(clk),
+				 .rst_n(rst_n),
+				 .load_en(c[1]),
+				 .shift_en(c[4]),
+				 .shift_in(Q_reg[0]),
+				 .d(1'b0),
+				 .q(Qm)
+				 );
+	      
+
+   register #(.WIDTH(8)) reg_M (
+				.clk(clk),
+				.rst_n(rst_n),
+				.load_en(c[0]),
+				.shift_en(1'b0),
+				.shift_in(1'b0),
+				.d(inbus),
+				.q(M_reg)
+				);
+   xorn #(8) xor_instance (
+			   .a(M_reg),
+			   .b(c[3]),
+			   .y(xor_o)
+			   );
+
+   adder #(8) adder_instance (
+			      .cin(c[3]),
+			      .a(A_reg),
+			      .b(xor_o),
+			      .sum(adder_o)
+			      );
+
+   // Tri-state buffers
+
+   tristate_buffer_bus #(8) A_out (
+				   .data_in(A_reg),
+				   .enable(c[6]),
+				   .data_out(output_buffer)
+				   );
+
+   tristate_buffer_bus #(8) Q_out (
+				   .data_in(Q_reg),
+				   .enable(c[7]),
+				   .data_out(output_buffer)
+				   );
+
+   assign outbus = output_buffer;
+   
+   
+
+  
+endmodule // booth
