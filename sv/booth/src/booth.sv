@@ -24,7 +24,8 @@ module booth_top (
    // Register Outputs
    logic signed [7:0] A_reg, M_reg, Q_reg;
    logic	      Qm;
-   
+   logic signed [7:0] M_input;
+   logic signed [7:0] Q_input;
    // Count
    logic [2:0] counter_o;
    logic       count_and_o;
@@ -82,7 +83,7 @@ module booth_top (
 			    .load_en(c[1]),
 			    .shift_en(c[4]),
 			    .shift_in(A_reg[0]),
-			    .d(inbus),
+			    .d(Q_input),
 			    .q(Q_reg)
 			    );
    
@@ -103,7 +104,7 @@ module booth_top (
 				.load_en(c[0]),
 				.shift_en(1'b0),
 				.shift_in(1'b0),
-				.d(inbus),
+				.d(M_input),
 				.q(M_reg)
 				);
    xorn #(8) xor_instance (
@@ -121,6 +122,17 @@ module booth_top (
 
    // Tri-state buffers
 
+   tristate_buffer_bus #(8) M_in (
+				   .data_in(inbus),
+				   .enable(c[0]),
+				   .data_out(M_input)
+				   );
+
+   tristate_buffer_bus #(8) Q_in (
+				   .data_in(inbus),
+				   .enable(c[1]),
+				   .data_out(Q_input)
+				   );
    tristate_buffer_bus #(8) A_out (
 				   .data_in(A_reg),
 				   .enable(c[6]),
