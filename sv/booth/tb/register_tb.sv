@@ -28,7 +28,7 @@ module register_tb;
 
    initial
      begin
-	$dumpfile("register.vcd");
+	$dumpfile("register_tb.vcd");
 	$dumpvars;
      end
 	

@@ -22,7 +22,7 @@ module booth_tb;
    
    initial
      begin
-	$dumpfile("booth.vcd");
+	$dumpfile("booth_tb.vcd");
 	$dumpvars;
      end
    
