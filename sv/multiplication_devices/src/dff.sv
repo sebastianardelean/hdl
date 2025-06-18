@@ -1,12 +1,11 @@
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 // Design Name: Booth Multiplication Algorithm 
 // File Name: dff.sv
 // Description: Implementation of the Booth Multiplication Algorithm
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
-// --------------------------------------------------------------------------
-`include "defs.svh"
-
+// -------------------------------------------------------------------------
+`timescale 1ns/1ps
 module dff (
 	    input logic		     clk,
 	    input logic		     rst_n,

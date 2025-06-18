@@ -17,7 +17,8 @@ VERILOG_SOURCES := $(wildcard $(SRC_DIR)/*.sv)
 # Testbenches to build and run. The names here should match the module names in your testbench files.
 TESTBENCHES := \
 	booth_tb \
-	register_tb
+	register_tb \
+	robertson_tb
 
 # Default target: compile and run all testbenches
 .PHONY: all

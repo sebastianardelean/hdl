@@ -1,13 +1,12 @@
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 // Design Name: Booth Multiplication Algorithm 
-// File Name: cu.sv
+// File Name: cu_booth.sv
 // Description: Implementation of the Booth Multiplication Algorithm
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
-// --------------------------------------------------------------------------
-`include "defs.svh"
-
-module cu (
+// -------------------------------------------------------------------------
+`timescale 1ns/1ps
+module cu_booth (
 	   input logic	clk,
 	   input logic	start,
 	   input logic	rst_n,

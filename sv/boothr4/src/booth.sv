@@ -5,8 +5,8 @@
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
 // --------------------------------------------------------------------------
-`include "defs.svh"
-module booth (
+
+module booth_top (
 	      input logic	       clk,
 	      input logic	       enable,
 	      input logic	       rst_n,
@@ -22,17 +22,22 @@ module booth (
    tri [7:0]  output_buffer;
    
    // Register Outputs
-   logic signed [7:0] A_reg, M_reg, Q_reg;
+   logic signed [8:0] A_reg;
+   logic signed [9:0] M_reg_extended;
+
+   logic signed [7:0] M_reg, Q_reg;
    logic	      Qm;
    logic signed [7:0] M_input;
    logic signed [7:0] Q_input;
+
+   
    // Count
-   logic [2:0] counter_o;
+   logic [1:0] counter_o;
    logic       count_and_o;
 
    // Other intermediate signals
-   logic signed [7:0] adder_o;
-   logic [7:0]	      xor_o;
+   logic signed [8:0] adder_o;
+   logic [8:0]	      xor_o;
 
    logic signed [7:0] A_outbus;
    logic signed [7:0] Q_outbus;
@@ -51,27 +56,26 @@ module booth (
    
    assign done = stop;
   
-   counter_3bits counter (
+   counter #(.WIDTH(2)) count_iterations (
 			  .clk(clk),
 			  .rst_n(rst_n),
 			  .en(c[5]),
 			  .count(counter_o)
 			  );
 
-   and3 and_counter (
+   and2 and_counter (
 		       .a(counter_o[0]),
 		       .b(counter_o[1]),
-		       .c(counter_o[2]),
 		       .y(count_and_o)
 		       );
    
    
-   register #(.WIDTH(8)) reg_A (
+   register #(.WIDTH(9)) reg_A (
 				.clk(clk),
 				.rst_n(rst_n),
 				.load_en(c[2]),
 				.shift_en(c[4]),
-				.shift_in(A_reg[7]),
+				.shift_in({A_reg[8],A_reg[8]}),
 				.d(adder_o),
 				.q(A_reg)
 				);
@@ -82,7 +86,7 @@ module booth (
 			    .rst_n(rst_n),
 			    .load_en(c[1]),
 			    .shift_en(c[4]),
-			    .shift_in(A_reg[0]),
+			    .shift_in({A_reg[1],A_reg[0]}),
 			    .d(Q_input),
 			    .q(Q_reg)
 			    );
@@ -92,7 +96,7 @@ module booth (
 				 .rst_n(rst_n),
 				 .load_en(c[1]),
 				 .shift_en(c[4]),
-				 .shift_in(Q_reg[0]),
+				 .shift_in({Q_reg[1],Q_reg[0]}),
 				 .d(1'b0),
 				 .q(Qm)
 				 );
@@ -103,17 +107,17 @@ module booth (
 				.rst_n(rst_n),
 				.load_en(c[0]),
 				.shift_en(1'b0),
-				.shift_in(1'b0),
+				.shift_in(2'b0),
 				.d(M_input),
 				.q(M_reg)
 				);
-   xorn #(8) xor_instance (
+   xorn #(9) xor_instance (
 			   .a(M_reg),
 			   .b(c[3]),
 			   .y(xor_o)
 			   );
 
-   adder #(8) adder_instance (
+   adder #(9) adder_instance (
 			      .cin(c[3]),
 			      .a(A_reg),
 			      .b(xor_o),

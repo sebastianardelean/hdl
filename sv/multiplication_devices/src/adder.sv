@@ -1,11 +1,11 @@
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 // Design Name: Booth Multiplication Algorithm 
 // File Name: adder.sv
 // Description: Implementation of the Booth Multiplication Algorithm
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
-// --------------------------------------------------------------------------
-`include "defs.svh"
+// -------------------------------------------------------------------------
+`timescale 1ns/1ps
 module adder #(parameter WIDTH = 8) (
 		    input logic cin,
 		    input logic signed [WIDTH-1:0] a,

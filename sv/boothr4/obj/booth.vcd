@@ -1,0 +1,2207 @@
+$date
+	Thu Jun 12 10:49:53 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module booth_tb $end
+$var wire 8 ! outbus [7:0] $end
+$var wire 1 " done $end
+$var reg 1 # clk $end
+$var reg 8 $ inbus [7:0] $end
+$var reg 1 % rst_n $end
+$var reg 1 & start $end
+$scope module dut $end
+$var wire 1 # clk $end
+$var wire 1 " done $end
+$var wire 1 & enable $end
+$var wire 8 ' inbus [7:0] $end
+$var wire 8 ( outbus [7:0] $end
+$var wire 8 ) output_buffer [7:0] $end
+$var wire 1 % rst_n $end
+$var wire 8 * xor_o [7:0] $end
+$var wire 1 + stop $end
+$var wire 3 , counter_o [2:0] $end
+$var wire 1 - count_and_o $end
+$var wire 8 . c [7:0] $end
+$var wire 8 / adder_o [7:0] $end
+$var wire 1 0 Qm $end
+$var wire 8 1 Q_reg [7:0] $end
+$var wire 8 2 Q_input [7:0] $end
+$var wire 8 3 M_reg [7:0] $end
+$var wire 8 4 M_input [7:0] $end
+$var wire 8 5 A_reg [7:0] $end
+$scope module A_out $end
+$var wire 8 6 data_out [7:0] $end
+$var wire 1 7 enable $end
+$var wire 8 8 data_in [7:0] $end
+$upscope $end
+$scope module M_in $end
+$var wire 8 9 data_in [7:0] $end
+$var wire 1 : enable $end
+$var wire 8 ; data_out [7:0] $end
+$upscope $end
+$scope module Q_in $end
+$var wire 8 < data_in [7:0] $end
+$var wire 1 = enable $end
+$var wire 8 > data_out [7:0] $end
+$upscope $end
+$scope module Q_out $end
+$var wire 8 ? data_out [7:0] $end
+$var wire 1 @ enable $end
+$var wire 8 A data_in [7:0] $end
+$upscope $end
+$scope module adder_instance $end
+$var wire 1 B cin $end
+$var wire 8 C b [7:0] $end
+$var wire 8 D a [7:0] $end
+$var reg 8 E sum [7:0] $end
+$upscope $end
+$scope module and_counter $end
+$var wire 1 F a $end
+$var wire 1 G b $end
+$var wire 1 H c $end
+$var wire 1 - y $end
+$upscope $end
+$scope module count_iterations $end
+$var wire 1 # clk $end
+$var wire 1 I en $end
+$var wire 1 % rst_n $end
+$var reg 3 J count [2:0] $end
+$upscope $end
+$scope module ctrl_unit $end
+$var wire 1 # clk $end
+$var wire 1 - count $end
+$var wire 1 K q0 $end
+$var wire 1 % rst_n $end
+$var wire 1 & start $end
+$var wire 1 0 qm $end
+$var reg 8 L c [7:0] $end
+$var reg 4 M next [3:0] $end
+$var reg 4 N state [3:0] $end
+$var reg 1 + stop $end
+$upscope $end
+$scope module q_Q $end
+$var wire 1 # clk $end
+$var wire 8 O d [7:0] $end
+$var wire 1 P load_en $end
+$var wire 1 % rst_n $end
+$var wire 1 Q shift_en $end
+$var wire 1 R shift_in $end
+$var wire 8 S shift_mux_out [7:0] $end
+$var wire 8 T q [7:0] $end
+$var wire 8 U load_mux_out [7:0] $end
+$scope begin gen_reg[0] $end
+$var wire 1 V shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 W d $end
+$var wire 1 % rst_n $end
+$var reg 1 X q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 Y d0 $end
+$var wire 1 Z d1 $end
+$var wire 1 P s $end
+$var wire 1 [ y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 \ d0 $end
+$var wire 1 V d1 $end
+$var wire 1 Q s $end
+$var wire 1 ] y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[1] $end
+$var wire 1 ^ shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 _ d $end
+$var wire 1 % rst_n $end
+$var reg 1 ` q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 a d0 $end
+$var wire 1 b d1 $end
+$var wire 1 P s $end
+$var wire 1 c y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 d d0 $end
+$var wire 1 ^ d1 $end
+$var wire 1 Q s $end
+$var wire 1 e y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[2] $end
+$var wire 1 f shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 g d $end
+$var wire 1 % rst_n $end
+$var reg 1 h q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 i d0 $end
+$var wire 1 j d1 $end
+$var wire 1 P s $end
+$var wire 1 k y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 l d0 $end
+$var wire 1 f d1 $end
+$var wire 1 Q s $end
+$var wire 1 m y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[3] $end
+$var wire 1 n shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 o d $end
+$var wire 1 % rst_n $end
+$var reg 1 p q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 q d0 $end
+$var wire 1 r d1 $end
+$var wire 1 P s $end
+$var wire 1 s y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 t d0 $end
+$var wire 1 n d1 $end
+$var wire 1 Q s $end
+$var wire 1 u y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[4] $end
+$var wire 1 v shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 w d $end
+$var wire 1 % rst_n $end
+$var reg 1 x q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 y d0 $end
+$var wire 1 z d1 $end
+$var wire 1 P s $end
+$var wire 1 { y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 | d0 $end
+$var wire 1 v d1 $end
+$var wire 1 Q s $end
+$var wire 1 } y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[5] $end
+$var wire 1 ~ shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 !" d $end
+$var wire 1 % rst_n $end
+$var reg 1 "" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 #" d0 $end
+$var wire 1 $" d1 $end
+$var wire 1 P s $end
+$var wire 1 %" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 &" d0 $end
+$var wire 1 ~ d1 $end
+$var wire 1 Q s $end
+$var wire 1 '" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[6] $end
+$var wire 1 (" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 )" d $end
+$var wire 1 % rst_n $end
+$var reg 1 *" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 +" d0 $end
+$var wire 1 ," d1 $end
+$var wire 1 P s $end
+$var wire 1 -" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 ." d0 $end
+$var wire 1 (" d1 $end
+$var wire 1 Q s $end
+$var wire 1 /" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[7] $end
+$var wire 1 0" shift_src $end
+$scope begin genblk2 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 1" d $end
+$var wire 1 % rst_n $end
+$var reg 1 2" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 3" d0 $end
+$var wire 1 4" d1 $end
+$var wire 1 P s $end
+$var wire 1 5" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 6" d0 $end
+$var wire 1 0" d1 $end
+$var wire 1 Q s $end
+$var wire 1 7" y $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module reg_A $end
+$var wire 1 # clk $end
+$var wire 8 8" d [7:0] $end
+$var wire 1 9" load_en $end
+$var wire 1 % rst_n $end
+$var wire 1 :" shift_en $end
+$var wire 1 ;" shift_in $end
+$var wire 8 <" shift_mux_out [7:0] $end
+$var wire 8 =" q [7:0] $end
+$var wire 8 >" load_mux_out [7:0] $end
+$scope begin gen_reg[0] $end
+$var wire 1 ?" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 @" d $end
+$var wire 1 % rst_n $end
+$var reg 1 A" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 B" d0 $end
+$var wire 1 C" d1 $end
+$var wire 1 9" s $end
+$var wire 1 D" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 E" d0 $end
+$var wire 1 ?" d1 $end
+$var wire 1 :" s $end
+$var wire 1 F" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[1] $end
+$var wire 1 G" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 H" d $end
+$var wire 1 % rst_n $end
+$var reg 1 I" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 J" d0 $end
+$var wire 1 K" d1 $end
+$var wire 1 9" s $end
+$var wire 1 L" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 M" d0 $end
+$var wire 1 G" d1 $end
+$var wire 1 :" s $end
+$var wire 1 N" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[2] $end
+$var wire 1 O" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 P" d $end
+$var wire 1 % rst_n $end
+$var reg 1 Q" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 R" d0 $end
+$var wire 1 S" d1 $end
+$var wire 1 9" s $end
+$var wire 1 T" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 U" d0 $end
+$var wire 1 O" d1 $end
+$var wire 1 :" s $end
+$var wire 1 V" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[3] $end
+$var wire 1 W" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 X" d $end
+$var wire 1 % rst_n $end
+$var reg 1 Y" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 Z" d0 $end
+$var wire 1 [" d1 $end
+$var wire 1 9" s $end
+$var wire 1 \" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 ]" d0 $end
+$var wire 1 W" d1 $end
+$var wire 1 :" s $end
+$var wire 1 ^" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[4] $end
+$var wire 1 _" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 `" d $end
+$var wire 1 % rst_n $end
+$var reg 1 a" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 b" d0 $end
+$var wire 1 c" d1 $end
+$var wire 1 9" s $end
+$var wire 1 d" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 e" d0 $end
+$var wire 1 _" d1 $end
+$var wire 1 :" s $end
+$var wire 1 f" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[5] $end
+$var wire 1 g" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 h" d $end
+$var wire 1 % rst_n $end
+$var reg 1 i" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 j" d0 $end
+$var wire 1 k" d1 $end
+$var wire 1 9" s $end
+$var wire 1 l" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 m" d0 $end
+$var wire 1 g" d1 $end
+$var wire 1 :" s $end
+$var wire 1 n" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[6] $end
+$var wire 1 o" shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 p" d $end
+$var wire 1 % rst_n $end
+$var reg 1 q" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 r" d0 $end
+$var wire 1 s" d1 $end
+$var wire 1 9" s $end
+$var wire 1 t" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 u" d0 $end
+$var wire 1 o" d1 $end
+$var wire 1 :" s $end
+$var wire 1 v" y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[7] $end
+$var wire 1 w" shift_src $end
+$scope begin genblk2 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 x" d $end
+$var wire 1 % rst_n $end
+$var reg 1 y" q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 z" d0 $end
+$var wire 1 {" d1 $end
+$var wire 1 9" s $end
+$var wire 1 |" y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 }" d0 $end
+$var wire 1 w" d1 $end
+$var wire 1 :" s $end
+$var wire 1 ~" y $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module reg_M $end
+$var wire 1 # clk $end
+$var wire 8 !# d [7:0] $end
+$var wire 1 "# load_en $end
+$var wire 1 % rst_n $end
+$var wire 1 ## shift_en $end
+$var wire 1 $# shift_in $end
+$var wire 8 %# shift_mux_out [7:0] $end
+$var wire 8 &# q [7:0] $end
+$var wire 8 '# load_mux_out [7:0] $end
+$scope begin gen_reg[0] $end
+$var wire 1 (# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 )# d $end
+$var wire 1 % rst_n $end
+$var reg 1 *# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 +# d0 $end
+$var wire 1 ,# d1 $end
+$var wire 1 "# s $end
+$var wire 1 -# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 .# d0 $end
+$var wire 1 (# d1 $end
+$var wire 1 ## s $end
+$var wire 1 /# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[1] $end
+$var wire 1 0# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 1# d $end
+$var wire 1 % rst_n $end
+$var reg 1 2# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 3# d0 $end
+$var wire 1 4# d1 $end
+$var wire 1 "# s $end
+$var wire 1 5# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 6# d0 $end
+$var wire 1 0# d1 $end
+$var wire 1 ## s $end
+$var wire 1 7# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[2] $end
+$var wire 1 8# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 9# d $end
+$var wire 1 % rst_n $end
+$var reg 1 :# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 ;# d0 $end
+$var wire 1 <# d1 $end
+$var wire 1 "# s $end
+$var wire 1 =# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 ># d0 $end
+$var wire 1 8# d1 $end
+$var wire 1 ## s $end
+$var wire 1 ?# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[3] $end
+$var wire 1 @# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 A# d $end
+$var wire 1 % rst_n $end
+$var reg 1 B# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 C# d0 $end
+$var wire 1 D# d1 $end
+$var wire 1 "# s $end
+$var wire 1 E# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 F# d0 $end
+$var wire 1 @# d1 $end
+$var wire 1 ## s $end
+$var wire 1 G# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[4] $end
+$var wire 1 H# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 I# d $end
+$var wire 1 % rst_n $end
+$var reg 1 J# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 K# d0 $end
+$var wire 1 L# d1 $end
+$var wire 1 "# s $end
+$var wire 1 M# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 N# d0 $end
+$var wire 1 H# d1 $end
+$var wire 1 ## s $end
+$var wire 1 O# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[5] $end
+$var wire 1 P# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 Q# d $end
+$var wire 1 % rst_n $end
+$var reg 1 R# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 S# d0 $end
+$var wire 1 T# d1 $end
+$var wire 1 "# s $end
+$var wire 1 U# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 V# d0 $end
+$var wire 1 P# d1 $end
+$var wire 1 ## s $end
+$var wire 1 W# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[6] $end
+$var wire 1 X# shift_src $end
+$scope begin genblk3 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 Y# d $end
+$var wire 1 % rst_n $end
+$var reg 1 Z# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 [# d0 $end
+$var wire 1 \# d1 $end
+$var wire 1 "# s $end
+$var wire 1 ]# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 ^# d0 $end
+$var wire 1 X# d1 $end
+$var wire 1 ## s $end
+$var wire 1 _# y $end
+$upscope $end
+$upscope $end
+$scope begin gen_reg[7] $end
+$var wire 1 `# shift_src $end
+$scope begin genblk2 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 a# d $end
+$var wire 1 % rst_n $end
+$var reg 1 b# q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 c# d0 $end
+$var wire 1 d# d1 $end
+$var wire 1 "# s $end
+$var wire 1 e# y $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 f# d0 $end
+$var wire 1 `# d1 $end
+$var wire 1 ## s $end
+$var wire 1 g# y $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module reg_Qm $end
+$var wire 1 # clk $end
+$var wire 1 h# d $end
+$var wire 1 i# load_en $end
+$var wire 1 % rst_n $end
+$var wire 1 j# shift_en $end
+$var wire 1 k# shift_in $end
+$var wire 1 l# shift_mux_out $end
+$var wire 1 0 q $end
+$var wire 1 m# load_mux_out $end
+$scope begin gen_reg[0] $end
+$var wire 1 n# shift_src $end
+$scope begin genblk2 $end
+$upscope $end
+$scope module ff_inst $end
+$var wire 1 # clk $end
+$var wire 1 % rst_n $end
+$var wire 1 m# d $end
+$var reg 1 0 q $end
+$upscope $end
+$scope module mux_load $end
+$var wire 1 h# d1 $end
+$var wire 1 i# s $end
+$var wire 1 m# y $end
+$var wire 1 l# d0 $end
+$upscope $end
+$scope module mux_shift $end
+$var wire 1 0 d0 $end
+$var wire 1 n# d1 $end
+$var wire 1 j# s $end
+$var wire 1 l# y $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module xor_instance $end
+$var wire 8 o# a [7:0] $end
+$var wire 1 p# b $end
+$var wire 8 q# y [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 q#
+0p#
+b0 o#
+0n#
+0m#
+0l#
+0k#
+0j#
+0i#
+0h#
+0g#
+0f#
+0e#
+zd#
+0c#
+0b#
+0a#
+0`#
+0_#
+0^#
+0]#
+z\#
+0[#
+0Z#
+0Y#
+0X#
+0W#
+0V#
+0U#
+zT#
+0S#
+0R#
+0Q#
+0P#
+0O#
+0N#
+0M#
+zL#
+0K#
+0J#
+0I#
+0H#
+0G#
+0F#
+0E#
+zD#
+0C#
+0B#
+0A#
+0@#
+0?#
+0>#
+0=#
+z<#
+0;#
+0:#
+09#
+08#
+07#
+06#
+05#
+z4#
+03#
+02#
+01#
+00#
+0/#
+0.#
+0-#
+z,#
+0+#
+0*#
+0)#
+0(#
+b0 '#
+b0 &#
+b0 %#
+0$#
+0##
+0"#
+bz !#
+0~"
+0}"
+0|"
+0{"
+0z"
+0y"
+0x"
+0w"
+0v"
+0u"
+0t"
+0s"
+0r"
+0q"
+0p"
+0o"
+0n"
+0m"
+0l"
+0k"
+0j"
+0i"
+0h"
+0g"
+0f"
+0e"
+0d"
+0c"
+0b"
+0a"
+0`"
+0_"
+0^"
+0]"
+0\"
+0["
+0Z"
+0Y"
+0X"
+0W"
+0V"
+0U"
+0T"
+0S"
+0R"
+0Q"
+0P"
+0O"
+0N"
+0M"
+0L"
+0K"
+0J"
+0I"
+0H"
+0G"
+0F"
+0E"
+0D"
+0C"
+0B"
+0A"
+0@"
+0?"
+b0 >"
+b0 ="
+b0 <"
+0;"
+0:"
+09"
+b0 8"
+07"
+06"
+05"
+z4"
+03"
+02"
+01"
+00"
+0/"
+0."
+0-"
+z,"
+0+"
+0*"
+0)"
+0("
+0'"
+0&"
+0%"
+z$"
+0#"
+0""
+0!"
+0~
+0}
+0|
+0{
+zz
+0y
+0x
+0w
+0v
+0u
+0t
+0s
+zr
+0q
+0p
+0o
+0n
+0m
+0l
+0k
+zj
+0i
+0h
+0g
+0f
+0e
+0d
+0c
+zb
+0a
+0`
+0_
+0^
+0]
+0\
+0[
+zZ
+0Y
+0X
+0W
+0V
+b0 U
+b0 T
+b0 S
+0R
+0Q
+0P
+bz O
+b0 N
+b0 M
+b0 L
+0K
+b0 J
+0I
+0H
+0G
+0F
+b0 E
+b0 D
+b0 C
+0B
+b0 A
+0@
+bz ?
+bz >
+0=
+b0 <
+bz ;
+0:
+b0 9
+b0 8
+07
+bz 6
+b0 5
+bz 4
+b0 3
+bz 2
+b0 1
+00
+b0 /
+b0 .
+0-
+b0 ,
+0+
+b0 *
+bz )
+bz (
+b0 '
+0&
+0%
+b0 $
+0#
+0"
+bz !
+$end
+#5000
+1#
+#10000
+b1 M
+0#
+b11111101 $
+b11111101 '
+b11111101 9
+b11111101 <
+1&
+1%
+#15000
+1,#
+04#
+1<#
+1D#
+1L#
+1T#
+1\#
+1d#
+1)#
+01#
+19#
+1A#
+1I#
+1Q#
+1Y#
+1a#
+b11111101 4
+b11111101 ;
+b11111101 !#
+1-#
+05#
+1=#
+1E#
+1M#
+1U#
+1]#
+b11111101 '#
+1e#
+1:
+1"#
+b10 M
+b1 .
+b1 L
+b1 N
+1#
+#20000
+b1 .
+b1 L
+b10 M
+0#
+0&
+#25000
+1Z
+0b
+1j
+1r
+1z
+1$"
+1,"
+14"
+1W
+0_
+1g
+1o
+1w
+1!"
+1)"
+11"
+z,#
+z4#
+z<#
+zD#
+zL#
+zT#
+z\#
+zd#
+1C"
+1S"
+1["
+1c"
+1k"
+1s"
+1{"
+b11111101 2
+b11111101 >
+b11111101 O
+1[
+0c
+1k
+1s
+1{
+1%"
+1-"
+b11111101 U
+15"
+bz 4
+bz ;
+bz !#
+1c#
+1[#
+1S#
+1K#
+1C#
+1;#
+b11111101 /
+b11111101 E
+b11111101 8"
+1+#
+1=
+1i#
+1P
+0:
+0"#
+1g#
+1f#
+1X#
+1_#
+1^#
+1P#
+1W#
+1V#
+1H#
+1O#
+1N#
+1@#
+1G#
+1F#
+18#
+1?#
+1>#
+10#
+b11111101 *
+b11111101 C
+b11111101 q#
+b11111101 %#
+1/#
+1.#
+b11 M
+b10 .
+b10 L
+1b#
+1Z#
+1R#
+1J#
+1B#
+1:#
+b11111101 3
+b11111101 &#
+b11111101 o#
+1*#
+b10 N
+1#
+#30000
+0o
+0w
+0!"
+0)"
+01"
+0s
+0{
+0%"
+0-"
+b101 U
+05"
+0r
+0z
+0$"
+0,"
+04"
+b101 2
+b101 >
+b101 O
+0#
+b101 $
+b101 '
+b101 9
+b101 <
+#35000
+1H"
+1L"
+1K"
+0S"
+0["
+0c"
+0k"
+0s"
+0{"
+1@"
+0P"
+0X"
+0`"
+0h"
+0p"
+0x"
+zZ
+zb
+zj
+zr
+zz
+z$"
+z,"
+z4"
+b11 /
+b11 E
+b11 8"
+b10 *
+b10 C
+b10 q#
+1D"
+0T"
+0\"
+0d"
+0l"
+0t"
+b11 >"
+0|"
+bz 2
+bz >
+bz O
+1Y
+1i
+1B
+1p#
+19"
+0=
+0i#
+0P
+1]
+b101 S
+1m
+b100 M
+b1100 .
+b1100 L
+1\
+1n#
+1k#
+1K
+1l
+1^
+b11 N
+1X
+b101 1
+b101 A
+b101 T
+1h
+1#
+#40000
+0#
+#45000
+0W
+1_
+0g
+11"
+0[
+1c
+0k
+b10000010 U
+15"
+1m#
+0Y
+1a
+0i
+13"
+0K"
+1@"
+0H"
+1B"
+1l#
+0]
+1e
+0m
+b10000010 S
+17"
+b11111101 *
+b11111101 C
+b11111101 q#
+1D"
+b1 >"
+0L"
+b1 <"
+1F"
+0C"
+0S"
+1j#
+1Q
+1:"
+0B
+0p#
+09"
+1M"
+1?"
+1E"
+10"
+1R
+b0 /
+b0 E
+b0 8"
+b101 M
+b10000 .
+b10000 L
+1I"
+b11 5
+b11 8
+b11 D
+b11 ="
+1A"
+b100 N
+1#
+#50000
+0#
+#55000
+1K"
+1S"
+1["
+1c"
+1k"
+1s"
+1{"
+1I
+0j#
+0Q
+0:"
+0M"
+0?"
+b11111110 /
+b11111110 E
+b11111110 8"
+0\
+0n#
+0k#
+0K
+1d
+1V
+0l
+0^
+16"
+1("
+b11 M
+b100000 .
+b100000 L
+b101 N
+b1 5
+b1 8
+b1 D
+b1 ="
+0I"
+0X
+1`
+0h
+b10000010 1
+b10000010 A
+b10000010 T
+12"
+10
+1#
+#60000
+0#
+#65000
+0@"
+1H"
+1P"
+1X"
+1`"
+1h"
+1p"
+1x"
+0D"
+1L"
+1T"
+1\"
+1d"
+1l"
+1t"
+b11111110 >"
+1|"
+19"
+0I
+1F
+b100 M
+b100 .
+b100 L
+b1 ,
+b1 J
+b11 N
+1#
+#70000
+0#
+#75000
+1W
+0_
+1)"
+01"
+1[
+0c
+1-"
+b1000001 U
+05"
+0m#
+1Y
+0a
+1+"
+03"
+1H"
+1X"
+1`"
+1h"
+1p"
+1x"
+1@"
+1P"
+1J"
+1R"
+1Z"
+1b"
+1j"
+1r"
+1z"
+0l#
+1]
+0e
+1/"
+b1000001 S
+07"
+1L"
+1\"
+1d"
+1l"
+1t"
+1|"
+1D"
+b11111111 >"
+1T"
+1N"
+1V"
+1^"
+1f"
+1n"
+1v"
+b11111111 <"
+1~"
+1j#
+1Q
+1:"
+09"
+1C"
+0S"
+0E"
+00"
+0R
+1M"
+1?"
+1U"
+1G"
+1]"
+1O"
+1e"
+1W"
+1m"
+1_"
+1u"
+1g"
+1}"
+1o"
+1w"
+1;"
+b101 M
+b10000 .
+b10000 L
+b11111011 /
+b11111011 E
+b11111011 8"
+b100 N
+0A"
+1I"
+1Q"
+1Y"
+1a"
+1i"
+1q"
+b11111110 5
+b11111110 8
+b11111110 D
+b11111110 ="
+1y"
+1#
+#80000
+0#
+#85000
+0C"
+0K"
+1S"
+1I
+0j#
+0Q
+0:"
+06"
+0("
+1."
+1~
+0d
+0V
+1\
+1n#
+1k#
+1K
+1E"
+10"
+1R
+b11111100 /
+b11111100 E
+b11111100 8"
+b11 M
+b100000 .
+b100000 L
+00
+02"
+1*"
+0`
+b1000001 1
+b1000001 A
+b1000001 T
+1X
+b11111111 5
+b11111111 8
+b11111111 D
+b11111111 ="
+1A"
+b101 N
+1#
+#90000
+0#
+#95000
+0P"
+0X"
+0`"
+0h"
+0p"
+0x"
+0T"
+0\"
+0d"
+0l"
+0t"
+0|"
+1K"
+0S"
+0["
+0c"
+0k"
+0s"
+0{"
+0@"
+1H"
+b10 /
+b10 E
+b10 8"
+b10 *
+b10 C
+b10 q#
+0D"
+b10 >"
+1L"
+1B
+1p#
+19"
+0I
+b100 M
+b1100 .
+b1100 L
+1G
+0F
+b11 N
+b10 ,
+b10 J
+1#
+#100000
+0#
+#105000
+0W
+1!"
+0)"
+0H"
+0[
+1%"
+b100000 U
+0-"
+0L"
+1m#
+0Y
+1#"
+0+"
+0J"
+1["
+1c"
+1k"
+1s"
+1{"
+1@"
+0P"
+0X"
+0`"
+0h"
+0p"
+0x"
+0z"
+0r"
+0j"
+0b"
+0Z"
+0R"
+1l#
+0]
+1'"
+b100000 S
+0/"
+0N"
+b11111101 *
+b11111101 C
+b11111101 q#
+1D"
+0T"
+0\"
+0d"
+0l"
+0t"
+b1 >"
+0|"
+0~"
+0v"
+0n"
+0f"
+0^"
+b1 <"
+0V"
+1C"
+1K"
+1S"
+1j#
+1Q
+1:"
+0B
+0p#
+09"
+0}"
+0o"
+0w"
+0;"
+0u"
+0g"
+0m"
+0_"
+0e"
+0W"
+0]"
+0O"
+0U"
+0G"
+0E"
+00"
+0R
+b11111111 /
+b11111111 E
+b11111111 8"
+b101 M
+b10000 .
+b10000 L
+0y"
+0q"
+0i"
+0a"
+0Y"
+0Q"
+b10 5
+b10 8
+b10 D
+b10 ="
+0A"
+b100 N
+1#
+#110000
+0#
+#115000
+0C"
+1I
+0j#
+0Q
+0:"
+1E"
+10"
+1R
+0M"
+0?"
+b11111110 /
+b11111110 E
+b11111110 8"
+0\
+0n#
+0k#
+0K
+1&"
+1v
+0."
+0~
+b11 M
+b100000 .
+b100000 L
+b101 N
+1A"
+b1 5
+b1 8
+b1 D
+b1 ="
+0I"
+0X
+1""
+b100000 1
+b100000 A
+b100000 T
+0*"
+10
+1#
+#120000
+0#
+#125000
+0@"
+1H"
+1P"
+1X"
+1`"
+1h"
+1p"
+1x"
+0D"
+1L"
+1T"
+1\"
+1d"
+1l"
+1t"
+b11111110 >"
+1|"
+19"
+0I
+1F
+b100 M
+b100 .
+b100 L
+b11 ,
+b11 J
+b11 N
+1#
+#130000
+0#
+#135000
+1w
+0!"
+1{
+b10000 U
+0%"
+0m#
+1y
+0#"
+1H"
+1X"
+1`"
+1h"
+1p"
+1x"
+1@"
+1P"
+1J"
+1R"
+1Z"
+1b"
+1j"
+1r"
+1z"
+0l#
+1}
+b10000 S
+0'"
+1L"
+1\"
+1d"
+1l"
+1t"
+1|"
+1D"
+b11111111 >"
+1T"
+1N"
+1V"
+1^"
+1f"
+1n"
+1v"
+b11111111 <"
+1~"
+1j#
+1Q
+1:"
+09"
+1C"
+0S"
+0E"
+00"
+0R
+1M"
+1?"
+1U"
+1G"
+1]"
+1O"
+1e"
+1W"
+1m"
+1_"
+1u"
+1g"
+1}"
+1o"
+1w"
+1;"
+b101 M
+b10000 .
+b10000 L
+b11111011 /
+b11111011 E
+b11111011 8"
+b100 N
+0A"
+1I"
+1Q"
+1Y"
+1a"
+1i"
+1q"
+b11111110 5
+b11111110 8
+b11111110 D
+b11111110 ="
+1y"
+1#
+#140000
+0#
+#145000
+0C"
+0K"
+1S"
+1I
+0j#
+0Q
+0:"
+0&"
+0v
+1|
+1n
+1E"
+10"
+1R
+b11111100 /
+b11111100 E
+b11111100 8"
+b11 M
+b100000 .
+b100000 L
+00
+0""
+b10000 1
+b10000 A
+b10000 T
+1x
+b11111111 5
+b11111111 8
+b11111111 D
+b11111111 ="
+1A"
+b101 N
+1#
+#150000
+0#
+#155000
+0I
+b100 M
+b0 .
+b0 L
+1H
+0G
+0F
+b11 N
+b100 ,
+b100 J
+1#
+#160000
+0#
+#165000
+1o
+0w
+11"
+1s
+0{
+b10001000 U
+15"
+1q
+0y
+13"
+1u
+0}
+b10001000 S
+17"
+1j#
+1Q
+1:"
+b101 M
+b10000 .
+b10000 L
+b100 N
+1#
+#170000
+0#
+#175000
+0g
+1o
+0)"
+0k
+1s
+b10001000 U
+0-"
+0i
+1q
+0+"
+1I
+0j#
+0Q
+0:"
+0m
+1u
+b10001000 S
+0/"
+b11 M
+b100000 .
+b100000 L
+1t
+1f
+0|
+0n
+16"
+1("
+b101 N
+1p
+0x
+b10001000 1
+b10001000 A
+b10001000 T
+12"
+1#
+#180000
+0#
+#185000
+0I
+1F
+b100 M
+b0 .
+b0 L
+b101 ,
+b101 J
+b11 N
+1#
+#190000
+0#
+#195000
+1g
+0o
+1)"
+1k
+0s
+b11000100 U
+1-"
+1i
+0q
+1+"
+1m
+0u
+b11000100 S
+1/"
+1j#
+1Q
+1:"
+b101 M
+b10000 .
+b10000 L
+b100 N
+1#
+#200000
+0#
+#205000
+1I
+0j#
+0Q
+0:"
+1."
+1~
+0t
+0f
+1l
+1^
+b11 M
+b100000 .
+b100000 L
+1*"
+0p
+b11000100 1
+b11000100 A
+b11000100 T
+1h
+b101 N
+1#
+#210000
+0#
+#215000
+0I
+b100 M
+b0 .
+b0 L
+1G
+0F
+b11 N
+b110 ,
+b110 J
+1#
+#220000
+0#
+#225000
+1_
+0g
+1!"
+1c
+0k
+b11100010 U
+1%"
+1a
+0i
+1#"
+1e
+0m
+b11100010 S
+1'"
+1j#
+1Q
+1:"
+b101 M
+b10000 .
+b10000 L
+b100 N
+1#
+#230000
+0#
+#235000
+0W
+1_
+0w
+0[
+1c
+b11100010 U
+0{
+0Y
+1a
+0y
+1I
+0j#
+0Q
+0:"
+0]
+1e
+b11100010 S
+0}
+b11 M
+b100000 .
+b100000 L
+1d
+1V
+0l
+0^
+1&"
+1v
+b101 N
+1`
+0h
+b11100010 1
+b11100010 A
+b11100010 T
+1""
+1#
+#240000
+0#
+#245000
+1-
+0I
+1F
+b100 M
+b0 .
+b0 L
+b111 ,
+b111 J
+b11 N
+1#
+#250000
+0#
+#255000
+1W
+0_
+1w
+1[
+0c
+b11110001 U
+1{
+1Y
+0a
+1y
+1]
+0e
+b11110001 S
+1}
+1j#
+1Q
+1:"
+b101 M
+b10000 .
+b10000 L
+b100 N
+1#
+#260000
+0#
+#265000
+0j#
+0Q
+0:"
+1|
+1n
+0d
+0V
+1\
+1n#
+1k#
+1K
+b110 M
+b0 .
+b0 L
+1x
+0`
+b11110001 1
+b11110001 A
+b11110001 T
+1X
+b101 N
+1#
+#270000
+0#
+#275000
+b11111111 !
+b11111111 (
+b11111111 )
+b11111111 6
+b11111111 ?
+17
+b111 M
+b1000000 .
+b1000000 L
+b110 N
+1#
+#280000
+0#
+#285000
+b11110001 !
+b11110001 (
+b11110001 )
+b11110001 6
+b11110001 ?
+1@
+07
+b1000 M
+b10000000 .
+b10000000 L
+b111 N
+1#
+#290000
+0#
+#295000
+bz !
+bz (
+bz )
+bz 6
+bz ?
+0@
+b0 M
+1"
+1+
+b0 .
+b0 L
+b1000 N
+1#
+#300000
+0#
+#305000
+0"
+0+
+b0 N
+1#
+#310000
+0#
+#315000
+1#
+#320000
+0#
+#325000
+1#
+#330000
+0#
+#335000
+1#

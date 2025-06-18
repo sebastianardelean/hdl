@@ -1,10 +1,10 @@
-//---------------------------------------------------------------------------
+//--------------------------------------------------------------------------
 // Design Name: Robertson Multiplication Algorithm 
 // File Name: robertson_parts.sv
 // Description: Implementation of the Robertson Multiplication Algorithm
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
-// --------------------------------------------------------------------------
+// -------------------------------------------------------------------------
 
 module robertson_top (
 	      input logic	       clk,
