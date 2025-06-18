@@ -10,7 +10,7 @@ module booth_tb;
    logic       done;
    
    // Instantiate the DUT
-   booth_top dut (
+   booth dut (
 		  .clk(clk),
 		  .rst_n(rst_n),
 		  .enable(start),

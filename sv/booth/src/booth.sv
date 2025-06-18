@@ -5,8 +5,8 @@
 // Version History
 // * June 9, 2025 (sebastian ardelean): Finished the implementation 
 // --------------------------------------------------------------------------
-
-module booth_top (
+`include "defs.svh"
+module booth (
 	      input logic	       clk,
 	      input logic	       enable,
 	      input logic	       rst_n,

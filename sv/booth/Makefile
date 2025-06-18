@@ -2,7 +2,7 @@ IVERILOG := iverilog
 VVP := vvp
 
 #Flags
-IVERILOG_FLAGS := -Wall -g2012
+IVERILOG_FLAGS := -Wall -g2012 -Iinclude
 VVP_FLAGS :=-v -l sim/log
 
 # Directories
