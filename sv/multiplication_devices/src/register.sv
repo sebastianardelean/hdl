@@ -20,22 +20,23 @@ module register #(parameter WIDTH = 8)
    logic [WIDTH-1:0] shift_mux_out;
 
    logic [WIDTH-1:0] load_mux_out;
-   
-   
+
+
    genvar	     i;
    
    generate
       for (i = 0; i < WIDTH; i++) begin : gen_reg
 
+ 
 	 logic shift_src;
        
 	 if (i == WIDTH-1)
 	   assign shift_src = shift_in;
 	 else
 	   assign shift_src = q[i+1];
-	 
 
-	 mux2 #(1) mux_shift(
+
+          mux2 #(1) mux_shift(
 			.d0(q[i]),
 			.d1(shift_src),
 			.s(shift_en),
@@ -45,8 +46,8 @@ module register #(parameter WIDTH = 8)
 			.d1(d[i]),
 			.s(load_en),
 			.y(load_mux_out[i]));
-	 
-	 
+
+
 	 
 	 dff ff_inst (
                       .clk(clk),
@@ -58,7 +59,5 @@ module register #(parameter WIDTH = 8)
     endgenerate
 
 endmodule //register
-
-  
 
 

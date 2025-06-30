@@ -3,7 +3,8 @@
 // File Name: dff.sv
 // Description: Implementation of the Booth Multiplication Algorithm
 // Version History
-// * June 9, 2025 (sebastian ardelean): Finished the implementation 
+// June 9, 2025 (sebastian ardelean): Finished the implementation
+// June 27, 2025 (Sebastian Ardelean): Changed to synchronous reset!
 // -------------------------------------------------------------------------
 `timescale 1ns/1ps
 module dff (
@@ -13,7 +14,7 @@ module dff (
 	    output logic q
     );
 
-   always_ff @(posedge clk or negedge rst_n) begin
+   always_ff @(posedge clk) begin
       if (!rst_n)
 	q <= 1'b0;
       else

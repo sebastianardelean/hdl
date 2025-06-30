@@ -54,7 +54,7 @@ module robertson (
    
    assign done = stop;
   
-   counter_3bits counter (
+   counter_nbits #(.WIDTH(3)) counter (
 			  .clk(clk),
 			  .rst_n(rst_n),
 			  .en(c[4]),
