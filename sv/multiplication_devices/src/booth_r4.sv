@@ -71,7 +71,7 @@ module booth4 (
                                        .en(c[6]),
                                        .count(counter_out)
                                        );
-   and2 and_counter (
+   and2_gate and_counter (
                      .a(counter_out[0]),
                      .b(counter_out[1]),
                      .y(count_and_out)
@@ -134,7 +134,7 @@ module booth4 (
                     .y(M_reg8)
                     );
      
-   xorn #(9) xor_instance (
+   xorn_gate #(9) xor_instance (
                            .a(M_reg8),
                            .b(c[3]),
                            .y(xor_out)

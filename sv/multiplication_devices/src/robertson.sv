@@ -61,7 +61,7 @@ module robertson (
 			  .count(count_out)
 			  );
 
-   and3 and_counter (
+   and3_gate and_counter (
 		       .a(count_out[0]),
 		       .b(count_out[1]),
 		       .c(count_out[2]),
@@ -111,20 +111,20 @@ module robertson (
 				.d(M_reg_in),
 				.q(M_reg_out)
 				);
-   and2 and2_gate (
+   and2_gate and2_gate (
                    .a(M_reg_out[7]),
                    .b(Q_reg_out[0]),
                    .y(and_out)
                    );
 
-   or2 or2_gate (  
+   or2_gate or2_gate (  
                  .a(and_out),
                  .b(F_reg_out),
                  .y(or_out)
                  );
    
 
-   xorn #(8) xor_instance (
+   xorn_gate #(8) xor_instance (
 			   .a(M_reg_out),
 			   .b(c[5]),
 			   .y(xor_out)

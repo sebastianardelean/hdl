@@ -59,7 +59,7 @@ module booth (
 			  .count(counter_o)
 			  );
 
-   and3 and_counter (
+   and3_gate and_counter (
 		       .a(counter_o[0]),
 		       .b(counter_o[1]),
 		       .c(counter_o[2]),
@@ -108,7 +108,7 @@ module booth (
 				.d(M_input),
 				.q(M_reg)
 				);
-   xorn #(8) xor_instance (
+   xorn_gate #(8) xor_instance (
 			   .a(M_reg),
 			   .b(c[3]),
 			   .y(xor_o)
