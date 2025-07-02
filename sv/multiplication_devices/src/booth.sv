@@ -66,34 +66,41 @@ module booth (
 		       .y(count_and_o)
 		       );
    
-   
+      
+
    register #(.WIDTH(8)) reg_A (
 				.clk(clk),
 				.rst_n(rst_n),
 				.load_en(c[2]),
 				.shift_en(c[4]),
-				.shift_in(A_reg[7]),
+                                .sr(A_reg[7]),
+                                .sl(1'b0),
+                                .shift_dir(c[4]),
 				.d(adder_o),
 				.q(A_reg)
 				);
    
    
    register #(.WIDTH(8)) q_Q (
-			    .clk(clk),
-			    .rst_n(rst_n),
-			    .load_en(c[1]),
-			    .shift_en(c[4]),
-			    .shift_in(A_reg[0]),
-			    .d(Q_input),
-			    .q(Q_reg)
-			    );
+			      .clk(clk),
+			      .rst_n(rst_n),
+			      .load_en(c[1]),
+			      .shift_en(c[4]),
+			      .sr(A_reg[0]),
+                              .sl(1'b0),
+                              .shift_dir(c[4]),
+			      .d(Q_input),
+			      .q(Q_reg)
+			      );
    
    register #(.WIDTH(1)) reg_Qm (
 				 .clk(clk),
 				 .rst_n(rst_n),
 				 .load_en(c[1]),
 				 .shift_en(c[4]),
-				 .shift_in(Q_reg[0]),
+				 .sr(Q_reg[0]),
+                                 .sl(1'b0),
+                                 .shift_dir(c[4]),
 				 .d(1'b0),
 				 .q(Qm)
 				 );
@@ -104,7 +111,9 @@ module booth (
 				.rst_n(rst_n),
 				.load_en(c[0]),
 				.shift_en(1'b0),
-				.shift_in(1'b0),
+				.sr(1'b0),
+                                .sl(1'b0),
+                                .shift_dir(1'b0),
 				.d(M_input),
 				.q(M_reg)
 				);

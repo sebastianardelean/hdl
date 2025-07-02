@@ -1,80 +1,94 @@
 `timescale 1ns/1ps
+
 module register_tb;
 
-    // Parameters
-    parameter WIDTH = 8;
+   // Parameters
+   localparam WIDTH = 8;
 
-    // Testbench signals
-    logic clk;
-    logic rst_n;
-    logic shift_en;
-   logic  shift_in;
-    logic load_en;
-    logic [WIDTH-1:0] data_in;
-    logic [WIDTH-1:0] data_out;
+   // DUT I/O
+   logic clk;
+   logic rst_n;
+   logic load_en;
+   logic shift_en;
+   logic sr, sl;
+   logic shift_dir; // 0 = left, 1 = right
+   logic [WIDTH-1:0] d;
+   logic [WIDTH-1:0] q;
 
-    // DUT instantiation
-    register #(.WIDTH(WIDTH)) dut (
-				   .clk(clk),
-				   .rst_n(rst_n),
-				   .load_en(load_en),
-			   	   .shift_en(shift_en),
-				   .shift_in(shift_in),
-				   .d(data_in),
-				   .q(data_out));
-   
-   
+   // Clock generator
+   always #5 clk = ~clk;
 
+   // Instantiate DUT
+   register #(WIDTH) dut (
+      .clk(clk),
+      .rst_n(rst_n),
+      .load_en(load_en),
+      .shift_en(shift_en),
+      .sr(sr),
+      .sl(sl),
+      .shift_dir(shift_dir),
+      .d(d),
+      .q(q)
+   );
 
    initial
      begin
-	$dumpfile("register_tb.vcd");
-	$dumpvars;
+        $dumpfile("register_tb.vcd");
+        $dumpvars;
      end
-	
    
-    // Clock generation: 10ns period
-    always #5 clk = ~clk;
+   // Test sequence
+   initial begin
+      $display("=== Starting register test ===");
 
-    // Test sequence
-    initial begin
-        // Initialize
-        clk = 0;
-        rst_n = 0;
-        shift_en = 0;
-        load_en = 0;
-        data_in = 0;
-       shift_in = 0;
-       
-        // Apply reset
-        #10;
-        rst_n = 1;
+      // Init
+      clk = 0;
+      rst_n = 0;
+      load_en = 0;
+      shift_en = 0;
+      sr = 0;
+      sl = 0;
+      shift_dir = 0;
+      d = 8'b0;
 
-        // Load a value
-        #10;
-        load_en = 1;
-        data_in = 8'b10101010;
-        #10;
-        load_en = 0;
+      // Reset
+      #10;
+      rst_n = 1;
+      #10;
 
-        // Shift right 3 times
-        repeat (3) begin
-            shift_en = 1;
-            #10;
-        end
-        shift_en = 0;
+      // Load value
+      d = 8'b10101010;
+      load_en = 1;
+      #10;
+      load_en = 0;
+      #10;
 
-        // Hold
-        #20;
+      $display("Loaded value: %b", q);
 
-        $finish;
-    end
+      // Shift left
+      shift_dir = 0;
+      sl = 0; // serial input from left
+      shift_en = 1;
+      #10;
+      shift_en = 0;
+      #10;
 
-    // Monitor output
-    initial begin
-        $display("Time\tclk\trst_n\tload_en\tshift_en\tdata_in\t\tdata_out");
-        $monitor("%0t\t%b\t%b\t%b\t%b\t\t%b\t%b", 
-            $time, clk, rst_n, load_en, shift_en, data_in, data_out);
-    end
+      $display("After left shift: %b", q);
+
+      // Shift right
+      shift_dir = 1;
+      sr = 1; // serial input from right
+      shift_en = 1;
+      #10;
+      shift_en = 0;
+      #10;
+
+      $display("After right shift: %b", q);
+
+      // Final value
+      $display("Final register content: %b", q);
+
+      $finish;
+   end
 
 endmodule

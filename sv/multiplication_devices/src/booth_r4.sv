@@ -82,7 +82,9 @@ module booth4 (
                                 .rst_n(rst_n),
                                 .load_en(c[2]),
                                 .shift_en(c[5]),
-                                .shift_in(A_reg[8]),
+                                .sr(A_reg[8]),
+                                .sl(1'b0),
+                                .shift_dir(c[5]),
                                 .d(adder_out),
                                 .q(A_reg)
                                 );
@@ -92,7 +94,9 @@ module booth4 (
                                 .rst_n(rst_n),
                                 .load_en(c[1]),
                                 .shift_en(c[5]),
-                                .shift_in(A_reg[0]),
+                                .sr(A_reg[0]),
+                                .sl(1'b0),
+                                .shift_dir(c[5]),
                                 .d(Q_in),
                                 .q(Q_reg)
                                 );
@@ -102,7 +106,9 @@ module booth4 (
                                  .rst_n(rst_n),
                                  .load_en(c[0]),
                                  .shift_en(c[5]),
-                                 .shift_in(Q_reg[0]),
+                                 .sr(Q_reg[0]),
+                                 .sl(1'b0),
+                                 .shift_dir(c[5]),
                                  .d(1'b0),
                                  .q(Qm)
                                  );
@@ -113,7 +119,9 @@ module booth4 (
                                 .rst_n(rst_n),
                                 .load_en(c[0]),
                                 .shift_en(1'b0),
-                                .shift_in(1'b0),
+                                .sr(1'b0),
+                                .sl(1'b0),
+                                .shift_dir(1'b0),
                                 .d(M_in),
                                 .q(M_reg)
                                 );

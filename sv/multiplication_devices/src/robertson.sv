@@ -74,20 +74,24 @@ module robertson (
 				.rst_n(rst_n),
 				.load_en(c[2]),
 				.shift_en(c[3]),
-				.shift_in(F_reg_out),
+				.sr(F_reg_out),
+                                .sl(1'b0),
+                                .shift_dir(c[3]),
 				.d(adder_out),
 				.q(A_reg_out)
 				);
    
    
    register #(.WIDTH(8)) reg_Q (
-			    .clk(clk),
-			    .rst_n(rst_n),
-			    .load_en(c[1]),
-			    .shift_en(c[3]),
-			    .shift_in(A_reg_out[0]),
-			    .d(Q_reg_in),
-			    .q(Q_reg_out)
+			        .clk(clk),
+			        .rst_n(rst_n),
+			        .load_en(c[1]),
+			        .shift_en(c[3]),
+			        .sr(A_reg_out[0]),
+                                .sl(1'b0),
+                                .shift_dir(c[3]),
+			        .d(Q_reg_in),
+			        .q(Q_reg_out)
 			    );
 
    
@@ -96,7 +100,9 @@ module robertson (
                                 .rst_n(rst_n),
                                 .load_en(c[0]),
                                 .shift_en(c[2]),
-                                .shift_in(or_out),
+                                .sr(or_out),
+                                .sl(1'b0),
+                                .shift_dir(c[2]),
                                 .d(1'b0),
                                 .q(F_reg_out)
                                 );
@@ -107,7 +113,9 @@ module robertson (
 				.rst_n(rst_n),
 				.load_en(c[0]),
 				.shift_en(1'b0),
-				.shift_in(1'b0),
+				.sr(1'b0),
+                                .sl(1'b0),
+                                .shift_dir(1'b0),
 				.d(M_reg_in),
 				.q(M_reg_out)
 				);
