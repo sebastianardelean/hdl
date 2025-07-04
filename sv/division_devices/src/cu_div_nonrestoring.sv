@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------
 
 `timescale 1ns/1ps
-module cu_div_restoring (
+module cu_div_nonrestoring (
                          input logic        clk,
                          input logic        start,
                          input logic        rst_n,
@@ -24,8 +24,10 @@ module cu_div_restoring (
                              LOAD_M,
                              LSHIFTA,
                              SUBTRACT,
+                             ADD,
                              TEST_S,
                              TEST_COUNT,
+                             CORRECTION,
                              OUTPUT_A,
                              OUTPUT_Q,
                              STOP
@@ -62,12 +64,19 @@ module cu_div_restoring (
            next = LSHIFTA;
         end
         LSHIFTA: begin
+           if (s == 1'b0)
+              next = SUBTRACT;
+           else
+             next = ADD;              
            c[3] = 1;
-           next = SUBTRACT;
         end
         SUBTRACT: begin
            c[4] = 1;
            c[5] = 1;
+           next = TEST_S;
+        end
+        ADD: begin
+           c[4] = 1;
            next = TEST_S;
         end
         TEST_S: begin
@@ -75,18 +84,22 @@ module cu_div_restoring (
              q_0 = 1;
            else begin
               q_0 = 0;
-              c[4] = 1;
            end
            c[9] = 1;
            next = TEST_COUNT;
         end
         TEST_COUNT: begin
            if (count)
-             next = OUTPUT_A;
+             next = CORRECTION;
            else begin
               c[6] = 1;
               next = LSHIFTA;
            end
+        end
+        CORRECTION: begin
+           if (s == 1'b1)
+             c[4] = 1;
+           next = OUTPUT_A;
         end
         OUTPUT_A: begin
            c[7] = 1;
