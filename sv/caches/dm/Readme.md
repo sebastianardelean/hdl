@@ -25,5 +25,5 @@ Main Memory size is 8 MiB, the addressable unit is the word. The cache is write-
 
 ### Cache
 
-$32 KiB = 2^5 \times 2^ 10 B$. Considering that there are $32 bits = 4B = 2^2 B$ per each word, that
-means that the cache size is $ \frac{2^5 \times 2^10}{2^2} $
+$32 KiB = 2^5 \times 2^{10} B$. Considering that there are $32 bits = 4B = 2^2 B$ per each word, that
+means that the cache size is $ \frac{2^5 \times 2^{10}}{2^2} $

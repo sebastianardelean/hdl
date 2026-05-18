@@ -72,6 +72,8 @@ module cache_controller_tb;
 
    always
      begin
+        # 100;
+        
         address <= 32'h00000004;
         din <= 0;
         rden <= 1;
