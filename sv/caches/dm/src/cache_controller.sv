@@ -33,10 +33,15 @@ module cache_controller
     );
 
 
-   typedef enum logic 
+   typedef enum logic [2:0] 
      {
       STATE_IDLE,
-      STATE_READ,
+      STATE_READ_HIT,
+      STATE_READ_MISS,
+      STATE_ALLOCATE,
+      STATE_REPLACE,
+      STATE_WRITE_HIT,
+      STATE_WRITE_MISS
       } state_t;
 
    state_t current_state, next_state;
