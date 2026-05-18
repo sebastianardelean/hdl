@@ -44,3 +44,16 @@ The address issued from the cache controller to main memory is on $8+10=18$ bits
 | Tag (20:13) | Index (12:3) | Block Offset (2:0) |  
 |-------------|--------------|---------------------|  
 | 8 bits | 10 bits | 3 bits |
+
+
+## Cache controller parameters
+
+```verilog
+parameter BLOCK_SIZE = 256; // bits (8 words * 4 B * 8 bits = 256 bits)
+parameter ADDRESS_WIDTH = 21; //bits (3 + 10 + 8)
+parameter INDEX_WIDTH = 10; //bits
+parameter TAG_WIDTH = 8; //bits
+parameter OFFSET_WIDTH = 3; //bits
+parameter WORD_SIZE = 32; //bits
+```
+
