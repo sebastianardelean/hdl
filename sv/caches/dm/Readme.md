@@ -55,5 +55,6 @@ parameter INDEX_WIDTH = 10; //bits
 parameter TAG_WIDTH = 8; //bits
 parameter OFFSET_WIDTH = 3; //bits
 parameter WORD_SIZE = 32; //bits
+parameter NBLOCKS = 1024; // 2^10 blocks in cache
 ```
 
