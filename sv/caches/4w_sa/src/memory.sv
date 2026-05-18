@@ -1,7 +1,7 @@
 `include "defs.svh"
-
+`timescale 1ns/1ps
 module memory
-  #(parameter WIDTH = 21,
+  #(parameter WIDTH = 18,
     parameter BLOCK_SIZE = 256,
     parameter FILE = ""
     )
