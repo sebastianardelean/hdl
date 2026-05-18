@@ -168,35 +168,5 @@ module cache_controller
       endcase // case (current_state)
       
    end // always_comb
-   
-        
-
-   
-
-  
-
-
-   // ------------------------------------------------
-   // Handle Writes
-   // ------------------------------------------------
-   always_ff @(posedge clock) begin
-      if (wren) begin
-         if (_hit) begin
-            _cdout = {WORD_SIZE{1'b0}};
-            cache_mem[caddress[`INDEX_FIELD]][caddress[`BLOCK_OFFSET_FIELD]] = cdin;
-            cache_dirty[caddress[`INDEX_FIELD]] = 1;
-            
-         end
-         else begin
-            //miss in cache
-            _maddress = {caddress[`TAG_FIELD],caddress[`INDEX_FIELD]};
-            cache_mem[caddress[`INDEX_FIELD]] = mdin;
-            cache_tag[caddress[`INDEX_FIELD]] = caddress[`TAG_FIELD];
-            cache_valid[caddress[`INDEX_FIELD]] = 1;
-            cache_mem[caddress[`INDEX_FIELD]][caddress[`BLOCK_OFFSET_FIELD]] = cdin;
-            cache_dirty[caddress[`INDEX_FIELD]] = 1;
-         end // else: !if(_hit)
-      end // if (wren)
-   end // always_ff @ (posedge clock)
-   
+      
  endmodule // cache_controller
