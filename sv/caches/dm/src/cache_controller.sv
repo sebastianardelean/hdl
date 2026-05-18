@@ -2,10 +2,6 @@
 
 `timescale 1ns/1ps
 
-`define TAG_FIELD 20:13
-`define INDEX_FIELD 12:3
-`define BLOCK_OFFSET_FIELD 2:0
-
 module cache_controller
   #(
     parameter BLOCK_SIZE = 256,
@@ -47,6 +43,14 @@ module cache_controller
    state_t current_state, next_state;
    
 
+   localparam TAG_MSB = 20;
+   localparam TAG_LSB = 13;
+   localparam INDEX_MSB = 12;
+   localparam INDEX_LSB = 3;
+   localparam BLOCK_OFFSET_MSB = 2;
+   localparam BLOCK_OFFSET_LSB = 0;
+   
+               
 
 
 
@@ -74,7 +78,7 @@ module cache_controller
    assign hit = _hit;
 
    assign mrden =
-                 ((cache_valid[caddress[`INDEX_FIELD]] == 0) && (cache_tag[caddress[`INDEX_FIELD]] != caddress[`TAG_FIELD]));
+                 ((cache_valid[caddress[INDEX_MSB:INDEX_LSB]] == 0) && (cache_tag[caddress[INDEX_MSB:INDEX_LSB]] != caddress[TAG_MSB:TAG_LSB]));
 
    assign mwren = _mwren;
    assign mdout = _mdout;
@@ -88,7 +92,7 @@ module cache_controller
       end
    end
 
-   always_ff @(posedge clk) begin
+   always_ff @(posedge clock) begin
       if (!rst_n) begin
          current_state <= STATE_IDLE;
          for (k = 0; k <= NBLOCKS; k = k + 1) begin
@@ -96,74 +100,75 @@ module cache_controller
             cache_dirty[k] = 0;
          end
       end
-      else
-        current_state <= next;
-      
+      else begin
+        current_state <= next_state;
+      end
    end
 
    // ------------------------------------------------
    // Hit check
    // ------------------------------------------------           
    always_comb begin 
-     _hit = (cache_valid[caddress[`INDEX_FIELD]] && (cache_tag[caddress[`INDEX_FIELD]] == caddress[`TAG_FIELD]));
+     _hit = (cache_valid[caddress[INDEX_MSB:INDEX_LSB]] && (cache_tag[caddress[INDEX_MSB:INDEX_LSB]] == caddress[TAG_MSB:TAG_LSB]));
    end
    
    always_comb begin
-      case (current_state)
+      unique case (current_state)
         STATE_IDLE: begin
            if (rden) begin
               if (_hit)
-                next = STATE_READ_HIT;
+                next_state = STATE_READ_HIT;
               else
-                next = STATE_READ_MISS;
+                next_state = STATE_READ_MISS;
            end
            if (wren) begin
               if (_hit)
-                next = STATE_WRITE_HIT;
+                next_state = STATE_WRITE_HIT;
               else
-                next = STATE_WRITE_MISS;
+                next_state = STATE_WRITE_MISS;
            end
-        end;
+        end
         STATE_READ_HIT: begin
            _mwren = 0;
-           _cdout = cache_mem[caddress[`INDEX_FIELD]][caddress[`BLOCK_OFFSET_FIELD]];
-           next = STATE_IDLE;
+           _cdout = cache_mem[caddress[INDEX_MSB:INDEX_LSB]][caddress[BLOCK_OFFSET_MSB:BLOCK_OFFSET_LSB]];
+           next_state = STATE_IDLE;
         end
         STATE_READ_MISS: begin
-           if (cache_dirty[caddress[`INDEX_FIELD]])
-             next = STATE_REPLACE;
+           if (cache_dirty[caddress[INDEX_MSB:INDEX_LSB]])
+             next_state = STATE_REPLACE;
            else 
-             next = STATE_ALLOCATE;           
+             next_state = STATE_ALLOCATE;           
         end
         STATE_ALLOCATE: begin
            _mwren = 0;
-           _maddress = {caddress[`TAG_FIELD],caddress[`INDEX_FIELD]};
-           cache_mem[caddress[`INDEX_FIELD]] = mdin;
-           cache_tag[caddress[`INDEX_FIELD]] = caddress[`TAG_FIELD];
-           cache_valid[caddress[`INDEX_FIELD]] = 1;
-           cache_dirty[caddress[`INDEX_FIELD]] = 0;
+           _maddress = {caddress[TAG_MSB:TAG_LSB],caddress[INDEX_MSB:INDEX_LSB]};
+           cache_mem[caddress[INDEX_MSB:INDEX_LSB]] = mdin;
+           cache_tag[caddress[INDEX_MSB:INDEX_LSB]] = caddress[TAG_MSB:TAG_LSB];
+           cache_valid[caddress[INDEX_MSB:INDEX_LSB]] = 1;
+           cache_dirty[caddress[INDEX_MSB:INDEX_LSB]] = 0;
            if (rden)
-             next = STATE_READ_HIT;
+             next_state = STATE_READ_HIT;
            else if (wren)
-             next = STATE_WRITE_HIT;
+             next_state = STATE_WRITE_HIT;
         end
         STATE_REPLACE: begin
            _mwren = 1;
-           _maddress = {cache_tag[caddress[`INDEX_FIELD]],caddress[`INDEX_FIELD]};
-           _mdout = cache_mem[caddress[`INDEX_FIELD]];
-           next = STATE_ALLOCATE;   
+           _maddress = {cache_tag[caddress[INDEX_MSB:INDEX_LSB]],caddress[INDEX_MSB:INDEX_LSB]};
+           _mdout = cache_mem[caddress[INDEX_MSB:INDEX_LSB]];
+           next_state = STATE_ALLOCATE;   
         end
         STATE_WRITE_HIT: begin
-            _cdout = {WORD_SIZE{1'b0}};
-            cache_mem[caddress[`INDEX_FIELD]][caddress[`BLOCK_OFFSET_FIELD]] = cdin;
-            cache_dirty[caddress[`INDEX_FIELD]] = 1;
-           next = STATE_IDLE;
+           _cdout = {WORD_SIZE{1'b0}};
+           cache_mem[caddress[INDEX_MSB:INDEX_LSB]][caddress[BLOCK_OFFSET_MSB:BLOCK_OFFSET_LSB]] = cdin;
+           cache_dirty[caddress[INDEX_MSB:INDEX_LSB]] = 1;
+           next_state = STATE_IDLE;
         end
         STATE_WRITE_MISS: begin
-           if (cache_dirty[caddress[`INDEX_FIELD]])
-             next = STATE_REPLACE;
+           if (cache_dirty[caddress[INDEX_MSB:INDEX_LSB]])
+             next_state = STATE_REPLACE;
            else
-             next = STATE_ALLOCATE
+             next_state = STATE_ALLOCATE;
+           
         end     
       endcase // case (current_state)
       
