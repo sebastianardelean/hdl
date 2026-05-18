@@ -1,14 +1,14 @@
 `include "defs.svh"
 `timescale 1ns/1ps
 module memory
-  #(parameter WIDTH = 18,
+  #(parameter ADDRESS_WIDTH = 18,
     parameter BLOCK_SIZE = 256,
     parameter FILE = ""
     )
    (
     input logic clock,
     input logic [BLOCK_SIZE - 1:0] din,
-    input logic [WIDTH - 1:0] address,
+    input logic [ADDRESS_WIDTH - 1:0] address,
     input logic rden,
     input logic wren,
     output logic [BLOCK_SIZE -1:0] dout
