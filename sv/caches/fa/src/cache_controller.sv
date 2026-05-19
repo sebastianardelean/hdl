@@ -123,11 +123,12 @@ module cache_controller
       // 2. LRU REPLACEMENT
       // -------------------------
       max_lru = 0;
-
-      for (int i = 0; i < NBLOCKS; i++) begin
-         if (cache_lru[i] >= max_lru) begin
-            max_lru = cache_lru[i];
-            active_index = i;
+      if (lookup_hit == 0) begin 
+         for (int i = 0; i < NBLOCKS; i++) begin
+            if (cache_lru[i] >= max_lru) begin
+               max_lru = cache_lru[i];
+               active_index = i;
+            end
          end
       end
    end
